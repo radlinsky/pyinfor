@@ -47,6 +47,7 @@ def get_labels(data, fill="number"):
      '011': '011: 0',
      '100': '100: 3',
      '101': '101: 2',
+
      '110': '110: 2',
      '111': '111: 3'}
     """
@@ -89,7 +90,6 @@ def venn2(data=None, names=None, fill="number", show_names=True, show_plot=True,
         names = ("set 1", "set 2")
 
     labels = get_labels(data, fill=fill)
-
     # set figure size
     if 'figsize' in kwds and len(kwds['figsize']) == 2:
         # if 'figsize' is in kwds, and it is a list or tuple with length of 2
@@ -252,8 +252,8 @@ def venn4(data=None, names=None, fill="number", show_names=True, show_plot=True,
     # 3
     pylab.text(235, 205, labels['0111'], **alignment)
     pylab.text(165, 205, labels['1011'], **alignment)
-    pylab.text(225, 135, labels['1101'], **alignment)
-    pylab.text(175, 135, labels['1110'], **alignment)
+    pylab.text(225, 135, labels['1110'], **alignment)
+    pylab.text(175, 135, labels['1101'], **alignment)
     # 4
     pylab.text(200, 175, labels['1111'], **alignment)
     # names of different groups
