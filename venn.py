@@ -263,7 +263,7 @@ def venn4(data=None, names=None, fill="number", show_names=True, show_plot=True,
         pylab.text(270, 275, names[2], fontsize=16, **alignment)
         pylab.text(290, 110, names[3], fontsize=16, **alignment)
 
-    leg = ax.legend(names, loc='best', fancybox=True)
+    leg = ax.legend(loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
 
     if show_plot:
