@@ -47,6 +47,7 @@ def get_labels(data, fill="number"):
      '011': '011: 0',
      '100': '100: 3',
      '101': '101: 2',
+
      '110': '110: 2',
      '111': '111: 3'}
     """
@@ -89,7 +90,6 @@ def venn2(data=None, names=None, fill="number", show_names=True, show_plot=True,
         names = ("set 1", "set 2")
 
     labels = get_labels(data, fill=fill)
-
     # set figure size
     if 'figsize' in kwds and len(kwds['figsize']) == 2:
         # if 'figsize' is in kwds, and it is a list or tuple with length of 2
@@ -226,10 +226,10 @@ def venn4(data=None, names=None, fill="number", show_names=True, show_plot=True,
     ax = fig.gca()
     patches = []
     width, height = 170, 110  # width and height of the ellipses
-    patches.append(Ellipse((170, 170), width, height, -45, color=colors[0], alpha=0.5))
-    patches.append(Ellipse((200, 200), width, height, -45, color=colors[1], alpha=0.5))
-    patches.append(Ellipse((200, 200), width, height, -135, color=colors[2], alpha=0.5))
-    patches.append(Ellipse((230, 170), width, height, -135, color=colors[3], alpha=0.5))
+    patches.append(Ellipse((170, 170), width, height, -45, color=colors[0], alpha=0.5, label=names[0]))
+    patches.append(Ellipse((200, 200), width, height, -45, color=colors[1], alpha=0.5, label=names[1]))
+    patches.append(Ellipse((200, 200), width, height, -135, color=colors[2], alpha=0.5, label=names[2]))
+    patches.append(Ellipse((230, 170), width, height, -135, color=colors[3], alpha=0.5, label=names[3]))
     for e in patches:
         ax.add_patch(e)
     ax.set_xlim(80, 320); ax.set_ylim(80, 320)
@@ -239,31 +239,31 @@ def venn4(data=None, names=None, fill="number", show_names=True, show_plot=True,
     ### draw text
     # 1
     pylab.text(120, 200, labels['1000'], **alignment)
-    pylab.text(280, 200, labels['0100'], **alignment)
-    pylab.text(155, 250, labels['0010'], **alignment)
+    pylab.text(155, 250, labels['0100'], **alignment)
+    pylab.text(280, 200, labels['0010'], **alignment)
     pylab.text(245, 250, labels['0001'], **alignment)
     # 2
-    pylab.text(200, 115, labels['1100'], **alignment)
-    pylab.text(140, 225, labels['1010'], **alignment)
-    pylab.text(145, 155, labels['1001'], **alignment)
-    pylab.text(255, 155, labels['0110'], **alignment)
-    pylab.text(260, 225, labels['0101'], **alignment)
+    pylab.text(200, 115, labels['1001'], **alignment)
+    pylab.text(140, 225, labels['1100'], **alignment)
+    pylab.text(145, 155, labels['1010'], **alignment)
+    pylab.text(255, 155, labels['0101'], **alignment)
+    pylab.text(260, 225, labels['0110'], **alignment)
     pylab.text(200, 240, labels['0011'], **alignment)
     # 3
     pylab.text(235, 205, labels['0111'], **alignment)
-    pylab.text(165, 205, labels['1011'], **alignment)
+    pylab.text(165, 205, labels['1110'], **alignment)
     pylab.text(225, 135, labels['1101'], **alignment)
-    pylab.text(175, 135, labels['1110'], **alignment)
+    pylab.text(175, 135, labels['1011'], **alignment)
     # 4
     pylab.text(200, 175, labels['1111'], **alignment)
     # names of different groups
     if show_names:
         pylab.text(110, 110, names[0], fontsize=16, **alignment)
-        pylab.text(290, 110, names[1], fontsize=16, **alignment)
-        pylab.text(130, 275, names[2], fontsize=16, **alignment)
-        pylab.text(270, 275, names[3], fontsize=16, **alignment)
+        pylab.text(130, 275, names[1], fontsize=16, **alignment)
+        pylab.text(270, 275, names[2], fontsize=16, **alignment)
+        pylab.text(290, 110, names[3], fontsize=16, **alignment)
 
-    leg = ax.legend(names, loc='best', fancybox=True)
+    leg = ax.legend(loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
 
     if show_plot:
